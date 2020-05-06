@@ -242,6 +242,8 @@ void htif_t::parse_arguments(int argc, char ** argv)
       case HTIF_LONG_OPTIONS_OPTIND + 3:
         syscall_proxy.set_chroot(optarg);
         break;
+      case HTIF_LONG_OPTIONS_OPTIND + 4:
+        break;
       case '?':
         if (!opterr)
           break;
@@ -267,6 +269,18 @@ void htif_t::parse_arguments(int argc, char ** argv)
         else if (arg.find("+chroot=") == 0) {
           c = HTIF_LONG_OPTIONS_OPTIND + 3;
           optarg = optarg + 8;
+        }
+        else if (arg.find("+timeout=") == 0) {
+          c = HTIF_LONG_OPTIONS_OPTIND + 4;
+          optarg = optarg + 9;
+        }
+        else if (arg.find("+blkdev=") == 0) {
+          c = HTIF_LONG_OPTIONS_OPTIND + 4;
+          optarg = optarg + 8;
+        }
+        else if (arg.find("+fanspeed=") == 0) {
+          c = HTIF_LONG_OPTIONS_OPTIND + 4;
+          optarg = optarg + 10;
         }
         else if (arg.find("+permissive-off") == 0) {
           if (opterr)
